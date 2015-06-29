@@ -17,14 +17,15 @@ Tutorial from [A GDB Tutorial with Examples](http://www.cprogramming.com/gdb.htm
 
 Tutorial from [Using Valgrind to Find Memory Leaks and Invalid Memory Use](http://www.cprogramming.com/debugging/valgrind.html)
 
-### Note
 
-  - Skip the "Getting Valgrind" section if Valgrind is already available
- 
  
 ## Bug Hunting
 
 A list of programs demonstrating the different kind of bus are available in the `exercises` directory.
 Try the different debugging tools on every example to see how they behave and find the bugs.
 
+Run the following command to download all the exercices:
+```
+git clone https://github.com/sc-camp/2015-debug.git sc-camp-2015-debug
+```
 
