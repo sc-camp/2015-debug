@@ -1,5 +1,7 @@
 # Practical Session: Debugging
 
+Follow the instructions from the practical session page: [https://github.com/sc-camp/2015-debug](https://github.com/sc-camp/2015-debug)
+
 ## Pre-requisites
 
 TODO
