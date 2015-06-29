@@ -10,9 +10,9 @@
 // About Monte Carlo Estimation for Pi:
 // http://polymer.bu.edu/java/java/montepi/MontePi.html
 
-#define NB_THREADS 4
-
 int number_of_iterations = 1000000;
+int number_of_threads = 4;
+
 
 // return a random number in [0,1]
 float get_unit_random_number()
@@ -30,10 +30,10 @@ typedef struct
 
 void *thread_start()
 {
-  // Allocate a result
-  Result* result = malloc(sizeof(Result));
-  result->nb_iter = number_of_iterations;
-  result->in_circle_count = 0;
+  // Result
+  Result result;
+  result.nb_iter = number_of_iterations;
+  result.in_circle_count = 0;
 
   int iter;
   for ( iter = 0 ; iter < number_of_iterations ; iter++ )
@@ -48,11 +48,11 @@ void *thread_start()
     // Count if the point is in the unit circle
     if( dist < 1.0 )
     {
-      result->in_circle_count++;
+      result.in_circle_count++;
     }
   }
 
-  pthread_exit((void*) result);
+  pthread_exit((void*) &result);
 }
 
 
@@ -63,13 +63,18 @@ int main(int argc, char** argv)
   {
     number_of_iterations = atoi(argv[1]);
   }
+  // Get the number of threads from the parameters
+  if ( argc >= 3 )
+  {
+    number_of_threads = atoi(argv[2]);
+  }
 
 
 
-  // Create all thread
-  pthread_t threads[NB_THREADS];
+  // Create all threads
+  pthread_t* threads = malloc( number_of_threads * sizeof(pthread_t) );
   int i;
-  for( i = 0 ; i < NB_THREADS ; i++ )
+  for( i = 0 ; i < number_of_threads ; i++ )
   {
     int res = pthread_create( &threads[i], NULL, thread_start, NULL );
     if (res)
@@ -81,7 +86,7 @@ int main(int argc, char** argv)
 
   // Wait for all the threads to finish and accumulate results
   Result all_results;
-  for( i = 0 ; i < NB_THREADS ; i++ )
+  for( i = 0 ; i < number_of_threads ; i++ )
   {
     void* status;
     int res = pthread_join(threads[i], &status);
