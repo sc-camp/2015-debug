@@ -3,7 +3,7 @@
 Follow the instructions from the practical session page: [https://github.com/sc-camp/2015-debug](https://github.com/sc-camp/2015-debug)
 
 
-## Pre-requisites
+## 0 - Pre-requisites
 
 ### Configure your connection to Guane cluster
 
@@ -43,20 +43,20 @@ When the job is running, you can start the practical session.
 
 
 
-## GDB Tutorial
+## 1 - GDB Tutorial
 
 
 Tutorial from [A GDB Tutorial with Examples](http://www.cprogramming.com/gdb.html)
 
 
-## Valgrind Tutorial
+## 2 - Valgrind Tutorial
 
 
 Tutorial from [Using Valgrind to Find Memory Leaks and Invalid Memory Use](http://www.cprogramming.com/debugging/valgrind.html)
 
 
  
-## Bug Hunting
+## 3 - Bug Hunting
 
 A list of programs demonstrating the different kind of bus are available in the `exercises` directory.
 Try the different debugging tools on every example to see how they behave and find the bugs.
